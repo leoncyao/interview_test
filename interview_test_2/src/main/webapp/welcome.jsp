@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-sucessfully logged in
+    <%
+        // Retrieve parameters from the URL
+        String param1 = request.getParameter("company");
+        String param2 = request.getParameter("role");
+
+        // Check if parameters are present
+        if (param1 != null && param2 != null) {
+    %>
+            <p>Company Name: <%= param1 %></p>
+            <p>Role: <%= param2 %></p>
+    <%
+        } else {
+    %>
+            <p>No parameters found in the URL.</p>
+    <%
+        }
+    %>
 </body>
 </html>
