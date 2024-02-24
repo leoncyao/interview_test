@@ -15,6 +15,7 @@
         // Check if parameters are present
         if (param1 != null && param2 != null) {
     %>
+            Welcome!
             <p>Company Name: <%= param1 %></p>
             <p>Role: <%= param2 %></p>
     <%

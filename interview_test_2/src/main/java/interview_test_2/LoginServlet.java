@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+
     public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -47,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
+		System.out.println( System.getProperty("user.dir"));
 		File myObj = new File("password.txt");
         Scanner myReader = new Scanner(myObj);
         
@@ -61,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 
         Connection conn = null;
         Properties connectionProps = new Properties();
-        connectionProps.put("user", "root");
+        connectionProps.put("user", "admin");
         
         
         connectionProps.put("password", root_password);
@@ -72,9 +74,14 @@ public class LoginServlet extends HttpServlet {
 		} 
         try {
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/mydatabase?characterEncoding=utf8",
+					"jdbc:mysql://database-1.ci5u66lyoqgj.us-east-1.rds.amazonaws.com:3306/mydatabase?characterEncoding=utf8",
 			        connectionProps);
 			System.out.println("Connected to database");
+			
+//			conn = DriverManager.getConnection(
+//					"jdbc:mysql://localhost:3306/mydatabase?characterEncoding=utf8",
+//			        connectionProps);
+//			System.out.println("Connected to database");
 			
 			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
